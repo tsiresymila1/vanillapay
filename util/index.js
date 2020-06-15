@@ -5,18 +5,20 @@ module.exports = function(){
 
     this.key = null ;
 
-    function setKey(key){
+    this.setKey = function(key){
         this.key = key ;
     }
 
-    function encrypt(key,data) {
+    this.encrypt = function (key,data) {
         this.setKey(key);
         return Encryption.encrypt(this.key,data);
     }
-    function decript(key,data) {
+    this.decript = function (key,data) {
         this.setKey(key);
         return Encryption.decrypt(this.key,data);
     }
+
+    return this;
 
 }
 
