@@ -1,7 +1,7 @@
 
 var Encryption = require('node_triple_des');
 
-module.exports = function(){
+function Util(){
 
     this.key = null ;
 
@@ -9,16 +9,21 @@ module.exports = function(){
         this.key = key ;
     }
 
-    this.encrypt = function (key,data) {
+    this.encrypt = function(key,data,callback) {
         this.setKey(key);
-        return Encryption.encrypt(this.key,data);
+        Encryption.encrypt(key,JSON.stringify(data)).then(callback).catch(function(e){
+            console.log(e);
+        })
     }
-    this.decript = function (key,data) {
+    this.decrypt = function (key,data,callback) {
         this.setKey(key);
-        return Encryption.decrypt(this.key,data);
+        Encryption.decrypt(key,JSON.stringify(data)).then(callback).catch(function(e){
+            console.log(e);
+        });
     }
-
     return this;
 
 }
+
+module.exports = Util
 
