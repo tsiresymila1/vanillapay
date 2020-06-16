@@ -18,5 +18,5 @@
     "type" : "git",
     "url": "git@github.com:tsiresymila16/vanillapay.git",
     "directory": "packages/vanillapay"
-  },
+  }
 }
