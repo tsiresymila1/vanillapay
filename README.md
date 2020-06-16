@@ -5,14 +5,14 @@ For using vanilla pay NodeJs Module
 *Inside your project folder run*
 
 ```
-$ npm install vanillapay
+$ npm install --save vanillapay
 ```
 
 ```js
 
-var Payment = require('vanillapay');
+var VanillaPay = require('vanillapay');
 // get Paiment instance.
-var payment = new Payment(your_site_url,client_id,client_secret,public_key,private_key);
+var vanillapay = new VanillaPay(your_site_url,client_id,client_secret,public_key,private_key);
 
 ```
 
@@ -20,9 +20,11 @@ var payment = new Payment(your_site_url,client_id,client_secret,public_key,priva
 
 ```js
 
-payment.initPaie(idpanier,montant,nom,reference,adresseip,(idpayment){
-    //idpaiement is your payment id (crypted) and you need it to get payment result
+vanillapay.initPaie(idpanier,montant,nom,reference,adresseip,function(idpayment){
+    //idpaiement is your payment id (crypted) that you need if you want to get payment result
     console.log(idpayment);
+},function(error){
+    console.log(error);
 });
 //You will be redirect to VanillaPay payment and  follow it ;
 
@@ -33,8 +35,10 @@ payment.initPaie(idpanier,montant,nom,reference,adresseip,(idpayment){
 ```js
 
 //Getting payment result
-payment.resultPaie(idpayment,(result){
+vanillapay.resultPaie(idpayment,(result){
     console.log(result);
+},function(error){
+    console.log(error);
 });
 ```
 
